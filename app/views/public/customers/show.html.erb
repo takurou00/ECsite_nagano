@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <h3 class="ml-5 mb-5 bg-light">マイページ</h3>
+    </div>
+    <table class="row">
+        <tr>
+            <td>
+                <h5>登録情報</h5>
+            </td>
+            <td>
+                <%= link_to '編集する', edit_customer_path(@customer), class: "ml-3 mb-3 btn btn-success" %>
+            </td>
+        </tr>
+    </table>
+
+    <div class="row">
+        <table class="table table-bordered">
+            <tr>
+                <th class="table-secondary">氏名</th>
+                <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+            </tr>
+            <tr>
+                <th class="w-25 table-secondary">カナ</th>
+                <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+            </tr>
+            <tr>
+                <th class="table-secondary">郵便番号</th>
+                <td><%= @customer.postal_code %></td>
+            </tr>
+            <tr>
+                <th class="table-secondary">住所</th>
+                <td><%= @customer.address %></td>
+            </tr>
+            <tr>
+                <th class="table-secondary">電話番号</th>
+                <td><%= @customer.telephone_number %></td>
+            </tr>
+            <tr>
+                <th class="table-secondary">メールアドレス</th>
+                <td><%= @customer.email %></td>
+            </tr>
+        </table>
+    </div>
+
+    <table class="row">
+        <tr>
+            <td>
+                <h5>配送先</h5>
+            </td>
+            <td>
+                <%= link_to '一覧を見る', addresses_path, class: "ml-5 mb-3 btn btn-primary" %>
+            </td>
+        </tr>
+    </table>
+
+    <table class="row">
+        <tr>
+            <td>
+            <h5>注文履歴</h5>
+            </td>
+            <td>
+                <%= link_to '一覧を見る', orders_path, class: "ml-4 btn btn-primary" %>
+            </td>
+        </tr>
+    </table>
+
+</div>

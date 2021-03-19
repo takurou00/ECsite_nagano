@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row mx-auto justify-content-between">
+      <div>
+        <h4 class="bg-light">商品新規登録</h4>
+      </div>
+          <!--新規登録画面に遷移-->
+      <div>
+         <%= link_to new_admin_item_path do %>
+           <button type="button" class="btn btn-success btn-md">＋</button>
+         <% end %>
+      </div>
+  </div>
+      <!--商品一覧-->
+  <div class="row mt-3">
+    <table class="table">
+      <thead class="table-secondary">
+        <tr>
+          <th class="border-dark">商品ID</th>
+          <th class="border-dark">商品名</th>
+          <th class="border-dark">税抜価格</th>
+          <th class="border-dark">ジャンル</th>
+          <th class="border-dark">ステータス</th>
+        </tr>
+      </thead>
+      <% @items.each do |item| %>
+      <tbody class="border-dark">
+        <tr>
+          <!--ID-->
+          <td><%= item.id %></td>
+          <!--商品名-->
+          <td><%= link_to item.name, admin_item_path(item) %></td>
+          <!--価格-->
+          <td><%= item.price %></td>
+          <!--ジャンル---->
+          <!--byebug-->
+          <td><%= item.genre.name %></td>
+          <!--ステータス-->
+          <td><%= item.is_active ? "販売中" : "販売停止中" %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+   <%= paginate @items %>
+</div>

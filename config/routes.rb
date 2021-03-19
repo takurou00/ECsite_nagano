@@ -1,5 +1,39 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :custmers
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  devise_for :customers, controllers: {
+    sessions:      'customers/sessions',
+    passwords:     'customers/passwords',
+    registrations: 'customers/registrations'
+  }
+
+  namespace :admin do
+  root to: 'homes#top'
+  resources :items, only: [:new, :index,:show, :update, :edit, :create]
+  resources :genres, only: [:index, :update, :edit, :create]
+  resources :customers, only: [:index, :show, :edit, :update]
+  resources :orders, only: [:show, :update]
+  resources :order_details, only: [:update]
+  end
+
+   scope module: :public do
+   root to: 'homes#top'
+   get 'about' => 'homes#about'
+   get 'customers/my_page' => 'customers#show', as: 'my_page'
+   resources :customers, only: [:edit,:update]
+   get 'customers/unsubscribe' => 'customers#unsubscribe'
+   patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'customers_withdraw'
+   resources :items, only: [:index,:show]
+   resources :cart_items, only: [:index,:update,:destroy,:create]
+   resources :orders, only: [:new,:create,:index,:show]
+   post 'orders/confirm' => 'orders#confirm'
+   get 'orders/complete' => 'orders#complete'
+
+  end
+
+
 end
