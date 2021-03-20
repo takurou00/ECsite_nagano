@@ -26,12 +26,13 @@ Rails.application.routes.draw do
    get 'customers/my_page' => 'customers#show', as: 'my_page'
    resources :customers, only: [:edit,:update]
    get 'customers/unsubscribe' => 'customers#unsubscribe'
-   patch '/customers/:id/withdraw' => 'customers#withdraw', as: 'customers_withdraw'
+   patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'customers_withdraw'
    resources :items, only: [:index,:show]
    resources :cart_items, only: [:index,:update,:destroy,:create]
+   delete 'cart_items' => 'cart_items#destroy_all', as: 'cart_items_destroy_all'
+   post 'orders/confirm' => 'orders#confirm', as: 'orders_confirm'
+   get 'orders/complete' => 'orders#complete', as: 'orders_complete'
    resources :orders, only: [:new,:create,:index,:show]
-   post 'orders/confirm' => 'orders#confirm'
-   get 'orders/complete' => 'orders#complete'
    resources :addresses, only: [:index,:edit,:create,:update,:destroy]
    end
 

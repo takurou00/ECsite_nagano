@@ -1,0 +1,68 @@
+<div class='container'>
+  <h4>注文履歴詳細</h4>
+    <div class='row'>
+      <div class='col-md-8'>
+        <h6>注文情報</h6>
+        <table class='table table-bordered'>
+          <tr>
+            <th class='table-secondary'>注文日</th>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <th class='table-secondary'>配送先</th>
+            <td>〒<%= @order.postal_code %></br><%= @order.address %></br><%= @order.name %></td>
+          </tr>
+          <tr>
+            <th class='table-secondary'>支払い方法</th>
+            <td><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <th class='table-secondary'>ステータス</th>
+            <td><%= @order.status_i18n %></td>
+          </tr>
+        </table>
+      </div>
+      <div class='col-md-4'>
+        <h6>請求情報</h6>
+        <table class='table table-bordered'>
+          <tr>
+            <th class='table-secondary'>商品合計</th>
+            <td><%= @order.total_payment-@order.shipping_cost %></td>
+          </tr>
+          <tr>
+            <th class='table-secondary'>配送料</th>
+            <td><%= @order.shipping_cost %></td>
+          </tr>
+          <tr>
+            <th class='table-secondary'>ご請求金額</th>
+            <td><%= @order.total_payment%></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-12'>
+        <h6>注文内容</h6>
+        <table class='table table-bordered'>
+          <thead class='table-secondary'>
+            <tr>
+              <th>商品</th>
+              <th>単価（税込）</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.price*order_detail.amount %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

@@ -16,7 +16,7 @@
     <div class='mr-5 pr-5'>
     <% if customer_signed_in? %>
         <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.select :amount, options_for_select((1..20).to_a), include_blank: "個数選択" %>
+        <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
         <%= f.submit "カートに入れる", class: 'btn btn-success' %></td>
     <% end %>
     </div>

@@ -9,8 +9,8 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders
-
   end
+
 
   def show
     @order = Order.find(params[:id])
@@ -53,12 +53,12 @@ class Public::OrdersController < ApplicationController
     # binding.pry
     order_detail.save
   end
-    CartItem.destroy_all
-    redirect_to orders_complete_path
+    redirect_to orders_confirm_path
   end
 
 
   def complete
+    CartItem.destroy_all
   end
 
   #情報入力画面でボタンを押して情報をsessionに保存
