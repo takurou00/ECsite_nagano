@@ -1,11 +1,11 @@
 <dev class='container'>
-  <div class='row'>
-    <h3 class='ml-5 pl-5 mb-5 bg-light'>注文履歴一覧</h3>
+  <div class='row d-flex justify-content-center'>
+    <h3 class='font-weight-bold'>注文履歴一覧</h3>
   </div>
   <div class='row'>
     <div class='col-md-11 mx-auto'>
-      <table class='table table-bordered'>
-        <thead class='table-secondary'>
+      <table class='table'>
+        <thead class='thead-light text-center'>
           <tr>
             <th>注文日</th>
             <th>配送先</th>
@@ -15,7 +15,9 @@
             <th>注文詳細</th>
           </tr>
         </thead>
-        <tbody>
+        </div>
+        <div class="row d-flex align-items-center justify-content-center">
+        <tbody class="tbody text-center font-weight-normal">
           <% @orders.each do |order| %>
           <tr>
             <td><%= order.created_at.strftime('%Y/%m/%d') %> </td>

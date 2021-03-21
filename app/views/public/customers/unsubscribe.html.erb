@@ -1,19 +1,17 @@
-<div class="container  text-center">
+<div class="container">
 
-  <div class="row ml-5 pl-4 mb-4">
-    <h5>本当に退会しますか？</h5>
+  <div class="row d-flex justify-content-center text-center">
+    <h5 class="h5 font-weight-bold">本当に退会しますか？</h5>
   </div>
 
-  <div class="row">
-    <p>
-      退会すると、会員登録情報や</br>
-      これまでの購入履歴が閲覧できなくなります。</br>
-      退会する場合は。「退会する」をクリックしてください。
+  <div class="row d-flex justify-content-center text-center mt-3 mb-3">
+    <p class=""font-weight-normal>
+      退会すると、会員情報がすべて削除されます
     </p>
   </div>
-  <div class="row">
-    <%= link_to '退会しない', my_page_path, class: "ml-5 btn btn-primary" %>
-    <%= link_to '退会する', customers_withdraw_path(current_customer), method: :patch, class: "ml-5 btn btn-danger" %>
-  </div>
+  <div class="row d-flex justify-content-center">
+    <%= link_to '退会する', customers_withdraw_path(current_customer), method: :patch, class: "btn btn-danger" %>
+    <%= link_to '退会しない', my_page_path, class: "ml-2 btn btn-primary" %>
+    </div>
 
 </div>

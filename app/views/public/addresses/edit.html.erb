@@ -1,31 +1,36 @@
 <%= form_with model:@address,local:true do |f| %>
 <div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-  		<h3>配送先編集</h3>
-  		<table class='table'>
+  <div class='row d-flex justify-content-center'>
+  		<h3 class="h3 font-weight-bold">配送先編集</h3>
+  		</div>
+  		 <div class="row text-center">
+  		  <div class="col-lg-3"></div>
+  		   <div class="col-lg-6">
+  		<table class='table font-weight-normal'>
           <tr>
-            <td class="form-edit">
+            <td>
             <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
             <%= f.text_field :postal_code %>
             </td>
           </tr>
           <tr>
-            <td class="form-edit">
+            <td>
               <%= f.label :address, "住所" %>
               <%= f.text_field :address %>
             </td>
           </tr>
           <tr>
-            <td class="form-edit">
+            <td>
               <%= f.label :name, "宛名" %>
               <%= f.text_field :name %>
             </td>
-            <td class="form-edit">
-              <%= f.submit "変更内容を保存", class: "btn btn-success" %>
-            </td>
+            <td> </td>
           </tr>
-      </table>
-  </div>
-</div>
+       </table>
+      </div>
+     <div class="col-lg-3"></div>
+     </div>
+    <div class="row d-flex justify-content-center">
+    <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+   </div>
 <% end %>

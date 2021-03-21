@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<h3 class="title">注文情報入力</h3><br>
+
+			<%= form_with model: @order, local: true, do |f| %>
+
+			<!--支払方法-->
+			<p style="font-weight:bold; text-indent:-2em;">支払い方法</p>
+					<%= f.radio_button :payment_methods, 0, checked: true %>
+					<%= f.label :payment_methods, "銀行振込", style: "display: inline-block"  %><br>
+					<%= f.radio_button :payment_methods, 1 %>
+					<%= f.label :payment_methods, "クレジットカード", style: "display: inline-block" %><br><br>
+
+			<!--お届け先-->
+			<p style="font-weight:bold; text-indent:-2em;">お届け先</p>
+
+				<!--ご自身の住所-->
+				<%= f.radio_button(:selected_address, "my address", checked: true) %>
+				<%= f.label :selected_address, "ご自身の住所", style:"display:inline-block" %>
+				<div style="text-indent:2em;">
+					<%= current_customer.address %>
+				</div>
+
+				<!--登録先住所から選択-->
+				<%= f.radio_button(:selected_address, "address") %>
+				<%= f.label :登録先住所から選択 %><br>
+				<div style="text-indent:2em;">
+					<%= f.collection_select :shipping, @addresses, :id, :address_detail %>
+				</div>
+
+		<!--新しいお届け先-->
+		<%= f.radio_button(:selected_address, "new address") %>
+		<%= f.label :新しいお届け先 %><br>
+
+		<div style="text-indent:1em;">
+			<%= f.label :郵便番号, style: "width: 100px;" %>
+			<%= f.text_field :postal_number, style: "width: 200px;" %>
+		</div>
+
+		<div style="text-indent:1em;">
+			<%= f.label :住所, style: "width: 100px;"%>
+			<%= f.text_field :address, style: "width: 500px;" %>
+		</div>
+
+		<div style="text-indent:1em;">
+			<%= f.label :宛名, style: "width: 100px;" %>
+			<%= f.text_field :name, style: "width: 200px;" %>
+		</div>
+
+		<!--確認画面遷移ボタン-->
+		<div class="text-center">
+			<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+		</div>
+
+	<% end %>
+	</div>

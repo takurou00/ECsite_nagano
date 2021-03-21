@@ -70,3 +70,7 @@ gem 'kaminari'
 
 gem 'rails-i18n'
 gem 'enum_help'
+
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
+

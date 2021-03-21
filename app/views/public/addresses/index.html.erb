@@ -1,10 +1,11 @@
 <div class='container'>
   <div class='row'>
-    <div class='col'>
-      <h3 class='table-secondary'>配送先登録/一覧</h3>
+      <h3 class='h3 border-bottom'>配送先登録</h3>
+      </div>
+      <div class='row'>
         <%= form_with model:@address, url: addresses_path(@address), local:true do |f| %>
-          <table class='table'>
-            <tr class="form-postal_code row">
+          <table class='table font-weight-normal'>
+            <tr class>
               <td>
                 <%= f.label :postal_code, "郵便番号（ハイフンなし）" %>
               </td>
@@ -12,7 +13,8 @@
                 <%= f.text_field :postal_code %>
               </td>
             </tr>
-            <tr class="form-address row">
+
+            <tr>
               <td>
               	<%= f.label :address, "住所" %>
               </td>
@@ -20,20 +22,31 @@
                 <%= f.text_field :address %>
               </td>
             </tr>
-            <tr class="form-name row">
+
+            <tr>
               <td>
               	<%= f.label :name, "宛名" %>
               </td>
               <td>
                 <%= f.text_field :name %>
               </td>
+              </tr>
+
+              <tr>
               <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
+              <td></td>
             </tr>
           </table>
         <% end %>
+        </div>
+
+        <div>
+        <h3 class='h3 font-weight-normal border-bottom'>配送先一覧</h3>
+        </div>
+        <div class="row">
         <table class='table table-bordered' style="padding:10px">
     		  <thead>
-            <tr class='table-secondary'>
+            <tr class='bg-light'>
               <th>郵便番号</th>
               <th>住所</th>
               <th>宛名</th>
@@ -55,5 +68,5 @@
           </tbody>
         </table>
     </div>
-  </div>
+
 </div>
