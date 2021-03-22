@@ -1,23 +1,25 @@
-<h1>注文履歴詳細</h1>
-<table class='table table-bordered'>
+  <div class="ml-10 my-3">
+  <h2 class="h2 font-weight-normal">注文履歴詳細</h2>
+  </div>
+  <table class='table font-weight-normal'>
   <tr>
-    <th class='table-secondary'>購入者</th>
+    <th>購入者</th>
     <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
   </tr>
   <tr>
-    <th class='table-secondary'>注文日</th>
+    <th>注文日</th>
     <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
   </tr>
   <tr>
-    <th class='table-secondary'>配送先</th>
+    <th>配送先</th>
     <td>〒<%= @order.postal_code %> <%= @order.address %></br><%= @order.name %></td>
   </tr>
   <tr>
-    <th class='table-secondary'>支払い方法</th>
+    <th>支払い方法</th>
     <td><%= @order.payment_method %></td>
   </tr>
   <tr>
-    <th class='table-secondary'>注文ステータス</th>
+    <th>注文ステータス</th>
     <td>
       <%= form_with model: @order, url: admin_order_path(@order), method: :patch, local: true do |f| %>
       <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
@@ -28,8 +30,8 @@
 </table>
 
 
-<table class='table table-bordered'>
-  <thead class='table-secondary'>
+<table class='table'>
+  <thead class='thead'>
     <tr>
       <th>商品名</th>
       <th>単価（税込）</th>

@@ -1,15 +1,16 @@
-<div class="container-md">
+<div class="container">
 
-	<div class="row mb-5 ml-5">
-		<h4 class="bg-light pr-3 pl-3">商品詳細</h4>
+	<div class="row mb-1 d-flex justify-content-center">
+		<h4 class="h4 border-bottom text-center">商品詳細</h4>
 	</div>
 
-	<div class="row">
-		<div class="col-4">
-			<%= attachment_image_tag @item, :image, :fill, 300, 200 %>
+
+	<div class="row mb-1 d-flex justify-content-center">
+		<div class="col-4 d-flex align-items-center">
+			<%= attachment_image_tag @item, :image, :fill, 300, 200 ,class:"rounded" %>
 		</div>
 
-			<table class='col-4 table table-borderless'>
+			<table class='col-4 table table-borderless font-weight-normal'>
 				<tr>
 					<td>商品名</td>
 					<td><%= @item.name %></td>
@@ -40,13 +41,11 @@
 						<% end %>
 					</th>
 				</tr>
+				</table>
+				</div>
 
-				<tr>
-					<td>
-						<%= link_to '編集する', edit_admin_item_path(@item), class:"ml-4 btn btn-success" %>
-					</td>
-				</tr>
-
-			</table>
+       <div class="row mb-1 d-flex justify-content-center">
+       	<%= link_to '編集する', edit_admin_item_path(@item), class:"ml-4 btn btn-success" %>
+       </div>
 		</div>
 </div>

@@ -1,11 +1,10 @@
 <div class='container'>
-  <div class='row'>
-    <h4 class='ml-5 mb-3'><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</h4>
+  <div class='row d-flex justify-content-center'>
+    <h4 class='h4 border-bottom'><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</h4>
   </div>
-  <div>
-    <div class='col-md-10 col-md-offset-1'>
+    <div class='d-flex justify-content-center'>
       <%= form_with model:@customer,url: admin_customer_path(@customer), local: true do |f| %>
-        <table class='table table-borderless'>
+        <table class='table table-borderless my-4'>
           <tr>
             <td>会員id</td>
             <td><%= @customer.id %></td>
@@ -41,8 +40,9 @@
             <td><label><%= f.radio_button :is_deleted, "false" %>有効</label><label><%= f.radio_button :is_deleted, "true" %>無効</label></td>
           </tr>
         </table>
-        <%= f.submit '変更を保存', class: "btn btn-success" %>
-      <% end %>
+       </div>
+      <div class="row d-flex justify-content-center">
+      <%= f.submit '変更を保存', class: "btn btn-success" %>
     </div>
-  </div>
+  <% end %>
 </div>

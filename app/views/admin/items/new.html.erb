@@ -1,8 +1,10 @@
 <div class="container">
-  <h3 class='ml-5 pl-5'>商品新規登録</h3>
+  <div class="row d-flex justify-content-center">
+  <h3 class="h3 text-center mt-1">商品新規登録</h3>
+  </div>
 <%= form_with model: [ :admin, @item ], local: true do |f| %>
   <div class='row'>
-    <div class='mx-auto'>
+    <div class='mx-auto my-3'>
       <table class='table　table-borderless' style='height: 400px'>
         <tr>
           <th>商品画像</th>

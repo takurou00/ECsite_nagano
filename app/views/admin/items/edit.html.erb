@@ -1,13 +1,13 @@
 <div class="container">
-  <h3 class='ml-5 pl-5'>商品新規登録</h3>
+  <h3 class='h3 mb-2 font-weight-normal d-flex justify-content-center'>商品新規登録</h3>
     <%= form_with model: [ :admin, @item ], local: true do |f| %>
-  <div class='row'>
+  <div class='row my-4'>
     <div class='mx-auto'>
-      <table class='table　table-borderless' style='height: 400px'>
+      <table class='table　table-borderless font-weight-normal' style='height: 400px'>
         <tr>
           <th>商品画像</th>
           <td>
-            <%= attachment_image_tag @item, :image, class: "img-square", size:"300x200" %>
+            <%= attachment_image_tag @item, :image, class: "rounded", size:"300x200" %>
             <%= f.attachment_field :image, placeholder: "商品画像" %>
           </td>
         </tr>
@@ -35,7 +35,7 @@
     </div>
   </div>
     <div class='row justify-content-center'>
-      <%= f.submit "変更を保存", class: "col-2 mr-5 btn btn-success"%>
+      <%= f.submit "変更を保存", class: "btn btn-success"%>
     </div>
   </div>
 <% end %>

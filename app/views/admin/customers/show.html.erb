@@ -1,10 +1,10 @@
 <div class='container'>
-  <div class='row'>
-    <div class='bg-light'><h4 class='ml-3 mb-3'><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4></div>
+  <div class='row d-flex justify-content-center'>
+   <h4 class='h4 border-bottom'><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
   </div>
-  <div class="row">
-    <div class='col-md-10 col-md-offset-1'>
-      <table class='table table-borderless'>
+
+  <div class="row d-flex justify-content-center my-3">
+         <table class='col-6 table table-borderless text-center'>
         <tr>
           <td>会員id</td>
           <td><%= @customer.id %></td>
@@ -43,8 +43,12 @@
           </td>
         </tr>
       </table>
+   </div>
+
+      <div class="row d-flex justify-content-center">
       <%= link_to "編集する", edit_admin_customer_path, class: 'btn btn-success' %>
+      <span class="ml-1">
       <%= link_to "注文履歴一覧を見る", admin_root_path(@customer.id), class: 'btn btn-primary' %>
-    </div>
-  </div>
+      </span>
+      </div>
 </div>

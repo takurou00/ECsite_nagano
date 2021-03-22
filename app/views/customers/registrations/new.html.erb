@@ -1,11 +1,14 @@
 <div class="container">
-  <div class="row">
-    <h4 class="alert alert-light">新規会員登録</h4>
+  <div class="row d-flex justify-content-center">
+    <h4 class="h4 text-center text-muted">新規会員登録</h4>
   </div>
 
   <%= form_with model: @customer, url: customer_registration_path, id: 'new_customer', class: 'new_customer', local: true do |f| %>
     <%= render "customers/shared/error_messages", resource: resource %>
-  <table class="row field ml-5 pl-5">
+
+  <div class="row mt-4 mb-3">
+  <div class="col-lg-2"></div>
+  <table class="col-lg-10 font-weight-normal">
     <tr>
       <td>
         名前
@@ -13,10 +16,12 @@
       <td>
       <%= f.label :last_name, "(姓)" %>
       <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "山田" %>
+       <span class="ml-3">
+       <%= f.label :first_name, "(名)" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "太郎" %>
+        </span>
       </td>
       <td>
-        <%= f.label :first_name, "(名)" %>
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "太郎" %>
       </td>
     </tr>
     <tr>
@@ -26,10 +31,12 @@
       <td>
         <%= f.label :last_name_kana, "(セイ)" %>
         <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "ヤマダ" %>
+       <span class="ml-3">
+         <%= f.label :first_name_kana, "(メイ)" %>
+        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "タロウ" %>
+        </span>
       </td>
       <td>
-        <%= f.label :first_name_kana, "(メイ)" %>
-        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "タロウ" %>
       </td>
     </tr>
 
@@ -46,7 +53,7 @@
         <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
       </td>
       <td>
-        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "0000000" %>
       </td>
     </tr>
     <tr>
@@ -62,7 +69,7 @@
         <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
       </td>
       <td>
-        <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+        <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", placeholder: "00000000000" %>
       </td>
     </tr>
     <tr>
@@ -87,17 +94,20 @@
     <tr>
       <td></td>
       <td>
-        <%= f.submit "新規登録", class: "mt-4 btn btn-success" %>
       </td>
     </tr>
   </table>
+  </div></div>
+  <div class="row d-flex justify-content-center">
+    <%= f.submit "新規登録", class: "mt-4 btn btn-success" %>
+  </div>
 
-    <div class="row">
-      <h4 class="alert alert-light">既に登録済みの方</h4>
+    <div class="row d-flex justify-content-center">
+      <h5 class="h6 text-muted font-weight-normal border-bottom mt-3 mb-2">既に登録済みの方</h4>
     </div>
 
-  <div class="row">
-    <div class="col ml-5">
+  <div class="row d-flex justify-content-center">
+    <div class="border-bottom text-dark">
       <%= render "customers/shared/links" %>
     </div>
   </div>
