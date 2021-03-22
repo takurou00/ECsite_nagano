@@ -8,5 +8,4 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   validates :address, presence: true
-  validates :address, presence: true
 end

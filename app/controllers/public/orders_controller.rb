@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders
+    @orders = Order.page(params[:page]).per(8)
   end
 
 
@@ -60,8 +60,6 @@ class Public::OrdersController < ApplicationController
   def complete
     CartItem.destroy_all
   end
-
-  #情報入力画面でボタンを押して情報をsessionに保存
 
 
   private

@@ -18,7 +18,7 @@
 	      <% @cart_items.each do |cart_item| %>
 	     <tr>
         <th scope="col">
-          <p class="text-center"><%= attachment_image_tag(cart_item.item, :image, :fill, 45, 45, fallback: "img/no_image.jpg",class:"rounded") %><%= cart_item.item.name %></p>
+          <p class="text-center"><%= attachment_image_tag(cart_item.item, :image,size: "45x45", fallback: "img/no_image.jpg",class:"rounded") %><%= cart_item.item.name %></p>
         </th>
 
         <th scope="col">

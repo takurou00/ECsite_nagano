@@ -7,7 +7,9 @@
 
 	<div class="row mb-1 d-flex justify-content-center">
 		<div class="col-4 d-flex align-items-center">
-			<%= attachment_image_tag @item, :image, :fill, 300, 200 ,class:"rounded" %>
+			
+			<%= attachment_image_tag @item, :image,class:"rounded", size:"300x200" %>
+			
 		</div>
 
 			<table class='col-4 table table-borderless font-weight-normal'>
@@ -46,6 +48,7 @@
 
        <div class="row mb-1 d-flex justify-content-center">
        	<%= link_to '編集する', edit_admin_item_path(@item), class:"ml-4 btn btn-success" %>
+       		
        </div>
 		</div>
 </div>

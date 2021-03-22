@@ -9,8 +9,19 @@
   </head>
   <body>
       <header>
-   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm  justify-content-end">
-    <nav class="my-2 my-md-0 mr-md-3 ">
+   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+     <span class="my-0 ml-5 mr-md-auto">
+        <% if admin_signed_in? %>
+            <%= link_to admin_root_path do %>
+            <%= image_tag 'img/logo2.png', size: "50x50" %>
+            <% end %>
+        <% else %>
+            <%= link_to root_path do %>
+            <%= image_tag 'img/logo2.png', size: "50x50" %>
+            <% end %>
+        <% end %>
+     </span>
+    <nav class="my-2 my-md-0 mr-md-3">
        <ul class="nav">
         <% if customer_signed_in? %>
          <li class="nav-item"> <%= link_to "マイページ", my_page_path, class: 'p-2 text-dark' %></li>
