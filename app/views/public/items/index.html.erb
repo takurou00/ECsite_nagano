@@ -1,13 +1,13 @@
 <div class='container'>
-  <div class ='row'>
-    <h3 class="h3 font-weight-bold">商品一覧</h2><p class='text-muted'>（全<%= @items.count %>件）</p>
+  <div class ='row my-2 d-flex flex-row'>
+    <h3 class="h3 font-weight-bold">商品一覧</h3><p class='pt-2 text-dark'>（全<%= @items.count %>件）</p>
   </div>
-  <div class='row mx-auto'>
+  <div class='row mx-auto my-3'>
     <% @items.each do |item| %>
       <table class='col-4'>
         <tr>
           <td><%= link_to item_path(item) do %>
-            <%= attachment_image_tag(item, :image, fallback: "img/no_image.jpg",size: "250x250",class:"img-thumbnail") %>
+            <%= attachment_image_tag(item, :image, fallback: "img/no_image.jpg",size: "250x200",class:"rounded") %>
             <% end %>
           </td>
         </tr>
@@ -17,7 +17,7 @@
       </table>
     <% end %>
   </div>
-  <div class="mx-auto">
+  <div class="d-flex justify-content-center my-3">
     <%= paginate @items %>
   </div>
 </div>
