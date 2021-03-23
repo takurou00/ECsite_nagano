@@ -1,96 +1,85 @@
 <div class="container">
-  <div class="row d-flex justify-content-center">
-    <h3><p class="border-bottom rounded font-weight-bold">注文情報確認</p></h3>
+  <div class="row my-3 d-flex justify-content-center">
+    <h3 class="h3 border-bottom">注文情報確認</h3>
   </div>
 
   <div class="row d-flex justify-content-center">
-   <table class="table">
-     <thead>
-       <tr>
-       <th scope="col"><p class="font-weight-bold text-center">商品名</p></th>
-       <th scope="col"><p class="font-weight-bold">単価(税込)</p></th>
-       <th scope="col"><p class="font-weight-bold">数量</p></th>
-       <th scope="col"><p class="font-weight-bold">小計</p></th>
+    <table class="col">
+      <tr class="table bg-dark text-white">
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
       </tr>
-      </thead>
-      <tbody>
-        <% @sum = 0 %>
-	      <% @cart_items.each do |cart_item| %>
-	     <tr>
-        <th scope="col">
-          <p class="text-center"><%= attachment_image_tag(cart_item.item, :image,size: "45x45", fallback: "img/no_image.jpg",class:"rounded") %><%= cart_item.item.name %></p>
-        </th>
+      <tr>
+      <!--each文入る-->
+      <% @sum = 0 %>
+	    <% @cart_items.each do |cart_item| %>
+        <td>
+          <!--画像と商品名-->
+          <%= attachment_image_tag(cart_item.item, :image, fallback: "img/no_image.jpg",size: "45x45",class:"rounded") %><%= cart_item.item.name %>
+        </td>
 
-        <th scope="col">
+        <td>
          <%= (cart_item.item.price*1.1).floor %>
-        </th>
-        <th scope="col">
-
+        </td>
+        <td>
+          <!--数量-->
           <%= cart_item.amount %>
-        </th>
-        <th scope="col">
-
+        </td>
+        <td>
+          <!--小計-->
           <%= (cart_item.item.price*1.1*cart_item.amount).floor %>
-        </th>
+        </td>
          <% @sum += (cart_item.item.price*1.1*cart_item.amount).floor %>
       <% end %>
       </tr>
-      </tbody>
     </table>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-9"></div>
-      <div class="col-lg-3">
-    <table class="table">
-      <thead class="thead-light">
+    <table class="table col ml-5">
       <tr>
-        <th scope="col w-30 p-3 text-center">送料</th>
-        <th scope="col w-30 p-3 text-center">商品合計</th>
-        <th scope="col w-30 p-3 text-center">請求金額</th>
+        <th class="bg-dark text-white">送料</th>
+        <td>800</td>
       </tr>
-      </thead>
       <tr>
-       <td scope="col w-30 p-3"><p class="border-bottom text-center">800</p></td>
-       <td scope="col w-30 p-3"><p class="border-bottom text-center"><%= @sum %></p></td>
-       <td scope="col w-30 p-3"><p class="border-bottom text-center"><%= @sum+800 %></p></td>
+        <th class="bg-dark text-white">商品合計</th>
+        <td><%= @sum %></td>
+      </tr>
+      <tr>
+        <th class="bg-dark text-white">請求金額</th>
+        <td><%= @sum+800 %></td>
       </tr>
     </table>
-    </div>
-    </div>
-
+  </div>
 
   <div class="row d-flex justify-content-center">
-    <table>
+    <table class="table">
       <tr>
-        <th>
-          <p class="font-weight-bold border-bottom">支払方法</p>
-        </th>
-        <th><p class="font-weight-normal text-center"><%= @order.payment_method %></p></th>
+        <td>
+          <p class="font-weight-bold">支払方法</p>
+        </td>
+        <td><%= @order.payment_method %></td>
       </tr>
 
       <tr>
         <td>
-          <p class="font-weight-bold border-bottom">お届け先</p>
+          <p class="font-weight-bold">お届け先</p>
         </td>
       <td>
-        <p class="font-weight-normal text-center">〒<%= @order.postal_code %> <%= @order.address %></br></p>
+        〒<%= @order.postal_code %> <%= @order.address %></br>
+        <%= @order.name %>
       </td>
       </tr>
-      <tr> <td></td>
-      <td><p class="font-weight-normal text-center"><%= @order.name %></p></td></tr>
     </table>
   </div>
-  <div class="row d-flex justify-content-center">
-    <!--<= link_to '注文を確定する', orders_path, method: :post, class: "btn btn-success" %>-->
-
-    <%= form_with model:@order, url:'complete', local:true do |f| %>
+  <div class="row my-2 d-flex justify-content-center">
+    <%= form_with model:@order, url:orders_path, local:true do |f| %>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %>
       <%= f.hidden_field :address, :value => @order.address %>
       <%= f.hidden_field :name, :value => @order.name %>
       <%= f.hidden_field :postal_code, :value => @order.postal_code %>
       <%= f.hidden_field :sum, :value => @sum %>
+      <%= f.submit "注文確定する", class: "btn btn-success" %>
     <% end %>
-      <%= link_to '注文を確定する', orders_complete_path, method: :get, class: "btn btn-success" %>
   </div>
 </div>

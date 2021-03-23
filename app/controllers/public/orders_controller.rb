@@ -2,15 +2,16 @@ class Public::OrdersController < ApplicationController
 
   before_action :authenticate_customer!
 
+
   def new
      @order = Order.new
      @addresses = current_customer.addresses
   end
 
   def index
-    @orders = Order.page(params[:page]).per(8)
-  end
+    @orders = current_customer.orders
 
+  end
 
   def show
     @order = Order.find(params[:id])
@@ -53,13 +54,14 @@ class Public::OrdersController < ApplicationController
     # binding.pry
     order_detail.save
   end
-    redirect_to orders_confirm_path
+    CartItem.destroy_all
+    redirect_to orders_complete_path
   end
 
 
   def complete
-    CartItem.destroy_all
   end
+
 
 
   private

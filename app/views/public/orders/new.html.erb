@@ -1,86 +1,77 @@
-<div class='container d-flex justify-content-center'>
-	<div>
-		<div>
-			<h3 class='row '><p class="border-bottom rounded font-weight-bold">注文情報入力</p></h3>
+<div class='container font-weight-normal'>
+		<div class='row mt-4 d-flex justify-content-center'>
+			<h3 class='h3 border-bottom'>注文情報入力</h3>
+			</div>
 
 				<%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
-					<!--支払方法-->
-					<div class='row'>
-						<p class="border-bottom rounded font-weight-normal"><strong>支払い方法</strong></p>
+					<div class='row mt-4 mb-1 d-flex justify-content-center'>
+						<p class="font-weight-bold text-dark border-bottom">支払い方法</p>
 					</div>
 
-						<!--<p><= f.collection_radio_buttons :payment_method, Order.payment_methods_i18n, :first , :last %></p>-->
-					<div class='row'>
-						<p class="font-weight-light"><%= f.radio_button(:payment_method, "クレジットカード", checked: true) %><%= f.label :クレジットカード %></p>
+					<div class='row d-flex justify-content-center'>
+						<p><%= f.radio_button(:payment_method, "クレジットカード", checked: true) %><%= f.label :クレジットカード %></p>
 					</div>
-					<div class='row'>
-					  <p class="font-weight-light"><%= f.radio_button(:payment_method, "銀行振込" ) %><%= f.label :銀行振込 %></p>
-					</div>
-					<!--お届け-->
-					<div class='row'>
-					  <p class="border-bottom rounded font-weight-normal"><strong>お届け先</strong></p>
+					<div class='row d-flex justify-content-center'>
+						<p><%= f.radio_button(:payment_method, "銀行振込" ) %><%= f.label :銀行振込 %></p>
 					</div>
 
-					<!--ご自身の住所-->
-					<div class='row'>
+					<div class='row my-2 d-flex justify-content-center'>
+						<p class="font-weight-bold text-dark border-bottom">お届け先</p>
+					</div>
+
+					<div class='row d-flex justify-content-center'>
 						<p class="mr-2"><%= f.radio_button(:selected_address, 0, checked: true) %></p>
-						<p class="font-weight-normal"><%= f.label :ご自身の住所 %></br>
+						<p><%= f.label :ご自身の住所 %></br>
 						〒<%= current_customer.postal_code %> <%= current_customer.address %></br>
 						<%= current_customer.last_name %><%= current_customer.first_name %></p>
 					</div>
 
-					<!--登録先住所から選択-->
-					<div class='row'>
+					<div class='row d-flex justify-content-center'>
 						<p class="mr-2"><%= f.radio_button(:selected_address, 1 ) %></p>
-						<p class="font-weight-normal"><%= f.label :登録先住所から選択 %></br>
+						<p><%= f.label :登録先住所から選択 %></br>
 						<%= f.collection_select :customer_id, current_customer.addresses, :id, :address %></p>
 					</div>
 
-					<!--新しいお届け先-->
-					<div class='row'>
+
+					<div class='row d-flex justify-content-center'>
 						<p class="mr-2"><%= f.radio_button(:selected_address, 2 ) %></p>
-						<p class="font-weight-normal"><%= f.label :新しいお届け先 %></p>
+						<p><%= f.label :新しいお届け先 %></p>
 					</div>
 
-					<div class='row'>
+					<div class='row d-flex justify-content-center font-weight-bold'>
 						<table>
-              <thead>
-             	<tr>
+
+							<tr>
 								<td>
-								　<%= f.label :郵便番号, style: "width: 70px;", class:"border-bottom" %>
+									<%= f.label :郵便番号, style: "width: 100px;" %>
 								</td>
 								<td>
-									<%= f.text_field :postal_number, style: "width: 200px;",class:"form-control" %>
+									<%= f.text_field :postal_number, style: "width: 200px;" %>
 								</td>
 							</tr>
 
 							<tr>
 								<td>
-								　<%= f.label :住所, style: "width: 70px;",class:"border-bottom" %>
+									<%= f.label :住所, style: "width: 100px;"%>
 								</td>
 								<td>
-									<%= f.text_field :address, style: "width: 500px;",class:"form-control" %>
+									<%= f.text_field :address, style: "width: 500px;" %>
 								</td>
 							</tr>
 
-              <tr>
+							<tr>
 								<td>
-								　<%= f.label :宛名, style: "width: 70px;",class:"border-bottom" %>
+									<%= f.label :宛名, style: "width: 100px;" %>
 								</td>
 								<td>
-									<%= f.text_field :name, style: "width: 200px;",class:"form-control" %>
+									<%= f.text_field :name, style: "width: 200px;" %>
 								</td>
 							</tr>
-
-             <thead>
-						</table>
+          	</table>
 					</div>
 
-					<!--確認画面遷移ボタン-->
-					<div class='row mt-3'>
+					<div class='row my-4 d-flex justify-content-center'>
 						<p><%= f.submit "確認画面へ進む", class: "btn btn-success" %></p>
 					</div>
 				<% end %>
-		</div>
-	</div>
-</div>
+				</div>
