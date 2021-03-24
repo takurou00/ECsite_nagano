@@ -3,16 +3,16 @@
     <h3 class="h3 border-bottom">注文情報確認</h3>
   </div>
 
-  <div class="row d-flex justify-content-center">
-    <table class="col">
-      <tr class="table bg-dark text-white">
+  <div class="row justify-content-center">
+    <table class="table">
+      <thead class="table bg-dark text-white">
         <th>商品名</th>
         <th>単価(税込)</th>
         <th>数量</th>
         <th>小計</th>
-      </tr>
+      </thead>
       <tr>
-      <!--each文入る-->
+
       <% @sum = 0 %>
 	    <% @cart_items.each do |cart_item| %>
         <td>
@@ -35,8 +35,10 @@
       <% end %>
       </tr>
     </table>
+    </div>
 
-    <table class="table col ml-5">
+    <div class="row d-flex flex-row-reverse">
+    <table class="table col-5">
       <tr>
         <th class="bg-dark text-white">送料</th>
         <td>800</td>
